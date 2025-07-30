@@ -1,0 +1,35 @@
+<meta>
+    <info author="Multi Theft Auto Script Master" name="Advanced Admin Panel GODMODE" type="script" version="3.0"/>
+
+    <!-- Server Scripts -->
+    <script src="server/admin.lua" type="server"/>
+    <script src="server/actions.lua" type="server"/>
+    <script src="server/permissions.lua" type="server"/>
+    <script src="server/report_system.lua" type="server"/>
+    <script src="server/anticheat.lua" type="server"/>
+    <script src="server/ai_detection.lua" type="server"/>
+    <script src="server/godmode.lua" type="server"/>
+    <script src="server/battle_mode.lua" type="server"/>
+    <script src="server/replay_system.lua" type="server"/>
+    <script src="server/webhook.lua" type="server"/>
+
+    <!-- Client Scripts -->
+    <script src="client/cef.lua" type="client"/>
+    <script src="client/god_client.lua" type="client"/>
+    <script src="client/events.lua" type="client"/>
+
+    <!-- Shared -->
+    <script src="shared/config.lua" type="shared"/>
+    <script src="shared/anticheat_config.lua" type="shared"/>
+
+    <!-- HTML UI (CEF) -->
+    <file src="html/index.html"/>
+    <file src="html/style.css"/>
+    <file src="html/script.js"/>
+
+    <!-- Sounds -->
+    <file src="sounds/screamer.wav"/>
+
+    <!-- Utils -->
+    <script src="utils/logger.lua" type="server"/>
+</meta>

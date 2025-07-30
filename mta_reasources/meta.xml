@@ -1,5 +1,5 @@
 <meta>
-    <info author="Multi Theft Auto Script Master" name="Advanced Admin Panel GODMODE" type="script" version="3.0"/>
+    <info author="Jack Dogle Dev" name="Advanced Admin Panel GODMODE" type="script" version="0.1.0"/>
 
     <!-- Server Scripts -->
     <script src="server/admin.lua" type="server"/>

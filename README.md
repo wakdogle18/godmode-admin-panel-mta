@@ -177,7 +177,7 @@ MIT License – Bebas digunakan, dimodifikasi, dan disebarkan dengan mencantumka
 
 ## 🤝 Kredit
 
-- **Dikembangkan oleh:** @wakdogle18
+- **Dikembangkan oleh:** https://github.com/jackdogle/
 
 
 ---

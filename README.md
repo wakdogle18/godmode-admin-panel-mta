@@ -1,74 +1,70 @@
 # 🛡️ GODMODE ADMIN PANEL – Multi Theft Auto: San Andreas
 
 > 🔥 Panel Admin modern & overpower untuk server MTA:SA  
-> Menggunakan teknologi **CEF UI + MySQL + Discord Webhook + Anti-Cheat AI + Replay System**
+> Menggunakan **CEF UI + MySQL + Discord Webhook + Anti-Cheat AI + Replay System**
 
 ---
 
-## 🎯 FITUR UTAMA
+## 🎯 Fitur Utama
 
-- ✅ CEF UI Modern (HTML5 / CSS / JS)
-- ✅ Sistem Rank & Permission Admin
-- ✅ Troll Tools: Screamer, Meteor, Mind Control, Invert Controls
-- ✅ Spectate, Cloak, Freeze Time, Permadeath
-- ✅ AI-Based Cheat Detection (Teleport, Speed, Jump)
-- ✅ Replay System 15 detik terakhir (export `.json`)
-- ✅ Sistem `/report` + Unban Request + Discord Notification
-- ✅ Webhook Discord (full event log)
-- ✅ Battle Mode (1v1 admin vs player)
-- ✅ Web Dashboard (optional)
+- **CEF UI Modern** (HTML5 / CSS / JS)
+- **Sistem Rank & Permission Admin**
+- **Troll Tools:** Screamer, Meteor, Mind Control, Invert Controls
+- **Spectate, Cloak, Freeze Time, Permadeath**
+- **AI-Based Cheat Detection:** Teleport, Speed, Jump
+- **Replay System:** 15 detik terakhir (export `.json`)
+- **Sistem `/report` + Unban Request + Discord Notification**
+- **Webhook Discord:** Full event log
+- **Battle Mode:** 1v1 admin vs player
+- **Web Dashboard (opsional)**
 
 ---
 
-## 📁 STRUKTUR RESOURCE
+## 📁 Struktur Resource
 
+```
 godmode-admin-panel-mta/
 ├── mta_resources/
-│ └── advanced_admin/
-│ ├── client/
-│ ├── server/
-│ ├── shared/
-│ ├── utils/
-│ ├── html/
-│ ├── sounds/
-│ ├── replays/
-│ └── meta.xml
+│   └── advanced_admin/
+│       ├── client/
+│       ├── server/
+│       ├── shared/
+│       ├── utils/
+│       ├── html/
+│       ├── sounds/
+│       ├── replays/
+│       └── meta.xml
 ├── sql/
-│ └── mtasa_admin.sql
+│   └── mtasa_admin.sql
 ├── README.md
-
-yaml
-Salin
-Edit
+```
 
 ---
 
-## ⚙️ INSTALASI
+## ⚙️ Instalasi
 
-1. Tempatkan folder `advanced_admin` ke `resources/`
-2. Import database:
+1. **Copy** folder `advanced_admin` ke `resources/`
+2. **Import database:**
    ```bash
    mysql -u root -p your_database_name < sql/mtasa_admin.sql
-Pastikan koneksi MySQL terhubung di Lua:
+   ```
+3. **Pastikan koneksi MySQL di Lua:**
+   ```lua
+   dbConnect("mysql", "dbname=...;host=...;port=...;charset=utf8", "username", "password", "share=1")
+   ```
+4. **Tambahkan resource ke `mtaserver.conf`:**
+   ```xml
+   <resource src="advanced_admin" startup="1" protected="0" />
+   ```
+5. **Jalankan server** dan tekan `F7` untuk membuka admin panel.
 
-lua
-Salin
-Edit
-dbConnect("mysql", "dbname=...;host=...;port=...;charset=utf8", "username", "password", "share=1")
-Tambahkan resource ke mtaserver.conf:
+---
 
-xml
-Salin
-Edit
-<resource src="advanced_admin" startup="1" protected="0" />
-Jalankan server, dan tekan F7 untuk membuka admin panel.
+## 🧠 Sistem Rank & Izin
 
-🧠 SISTEM RANK DAN IZIN
-Edit file: shared/config.lua
+Edit file: `shared/config.lua`
 
-lua
-Salin
-Edit
+```lua
 adminRanks = {
   ["Helper"] = 1,
   ["Moderator"] = 2,
@@ -85,99 +81,106 @@ adminPermissions = {
   useGodMode = 4,
   viewReports = 2
 }
-Untuk set rank player:
+```
 
-lua
-Salin
-Edit
+**Set rank player:**
+```lua
 setAccountData(getPlayerAccount(player), "admin:rank", "Admin")
-⌨️ KONTROL DEFAULT
-Tombol	Fungsi
-F7	Toggle Admin Panel UI
+```
 
-📡 DISCORD INTEGRATION
-Buka server/webhook.lua
+---
 
-Masukkan Webhook Discord:
+## ⌨️ Kontrol Default
 
-lua
-Salin
-Edit
+| Tombol | Fungsi                |
+|--------|-----------------------|
+| F7     | Toggle Admin Panel UI |
+
+---
+
+## 📡 Integrasi Discord
+
+Edit `server/webhook.lua` dan masukkan Webhook Discord:
+
+```lua
 DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/..."
-Webhook bisa dibuat dari:
-Server Settings > Integrations > Webhooks > New Webhook
+```
 
-🔐 SISTEM CHEAT DETECTION
-🚨 Teleport / abnormal movement
+Buat webhook di:  
+**Server Settings > Integrations > Webhooks > New Webhook**
 
-🏃 Speedhack
+---
 
-🦘 Super Jump
+## 🔐 Sistem Cheat Detection
 
-Semua dilog otomatis ke DB + Discord
+- **Teleport / abnormal movement**
+- **Speedhack**
+- **Super Jump**
 
-🎥 SISTEM REPLAY
-Menyimpan 15 detik gerakan player terakhir
+Semua log otomatis ke DB & Discord.
 
-Disimpan sebagai file .json di /replays/
+---
 
-Gunakan command:
+## 🎥 Sistem Replay
 
-lua
-Salin
-Edit
+Menyimpan 15 detik gerakan player terakhir sebagai file `.json` di `/replays/`.
+
+**Command:**
+```lua
 /savereplay PlayerName
-📦 DATABASE YANG DIGUNAKAN
-📄 sql/mtasa_admin.sql berisi:
+```
 
-admin_logs → log aktivitas admin
+---
 
-player_reports → laporan /report
+## 📦 Database
 
-cheater_logs → hasil deteksi anti-cheat
+File `sql/mtasa_admin.sql` berisi tabel:
 
-unban_requests → request unban
+- `admin_logs` → log aktivitas admin
+- `player_reports` → laporan `/report`
+- `cheater_logs` → hasil deteksi anti-cheat
+- `unban_requests` → request unban
+- `admin_users` → dashboard web login (opsional)
 
-admin_users → dashboard web login (opsional)
+---
 
-🌐 DASHBOARD WEB (OPSIONAL)
-Fitur mendatang:
+## 🌐 Dashboard Web (Opsional)
 
-Login Admin ke dashboard
+**Fitur mendatang:**
+- Login Admin ke dashboard
+- Statistik online & aktivitas log
+- Real-time stream & monitoring
+- Approve/reject ban appeals
 
-Statistik online, aktifitas log
+---
 
-Real-time stream + monitoring
+## ✅ Status Fitur
 
-Approve/reject ban appeals
+| Fitur             | Status   |
+|-------------------|----------|
+| CEF Panel         | ✅ Ready |
+| Troll Tools       | ✅ Ready |
+| Replay System     | ✅ Ready |
+| Discord Webhook   | ✅ Ready |
+| AI Detection      | ✅ Ready |
+| Ban Appeal Web    | 🔜 Soon  |
+| OBS Overlay Mode  | 🔜 Soon  |
+| Web Dashboard     | 🔜 Soon  |
 
-✅ FITUR LAIN
-Fitur	Status
-CEF Panel	✅ Ready
-Troll Tools	✅ Ready
-Replay System	✅ Ready
-Discord Webhook	✅ Ready
-AI Detection	✅ Ready
-Ban Appeal Web	🔜 Soon
-OBS Overlay Mode	🔜 Soon
-Web Dashboard	🔜 Soon
+---
 
-🧾 LISENSI
+## 🧾 Lisensi
+
 MIT License – Bebas digunakan, dimodifikasi, dan disebarkan dengan mencantumkan kredit.
 
-🤝 KREDIT
-Dikembangkan oleh: Multi Theft Auto Script Master
-Direquest oleh: @wakdogle18
+---
 
-💥 Ini adalah panel admin yang bukan hanya OP — tapi GODMODE.
+## 🤝 Kredit
+
+- **Dikembangkan oleh:** Multi Theft Auto Script Master
+- **Direquest oleh:** @wakdogle18
+
+---
+
+💥 Ini adalah panel admin yang bukan hanya OP — tapi GODMODE.  
 Selamat mengatur dunia server-mu, Bos!
-
-yaml
-Salin
-Edit
-
-
-
-
-
-

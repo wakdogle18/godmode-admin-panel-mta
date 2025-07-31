@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Godmode Admin Panel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="admin-panel">
+        <h1>🛡️ GODMODE ADMIN PANEL</h1>
+
+        <table id="playerTable">
+            <thead>
+                <tr>
+                    <th>Player</th>
+                    <th>HP</th>
+                    <th>Armor</th>
+                    <th>Ping</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody id="playerList">
+                <!-- Diisi oleh JS -->
+            </tbody>
+        </table>
+
+        <div id="actions">
+            <h3>🔧 Actions</h3>
+            <input type="text" id="selectedPlayer" placeholder="Pilih player">
+            <button onclick="doAction('Kick')">Kick</button>
+            <button onclick="doAction('Freeze')">Freeze</button>
+            <button onclick="doAction('Slap')">Slap</button>
+            <button onclick="doAction('Set Health')">Set HP</button>
+            <button onclick="doAction('Teleport')">Teleport</button>
+
+            <h3>🌀 Troll</h3>
+            <button onclick="godPower('cloak')">Cloak</button>
+            <button onclick="godPower('meteor')">Meteor</button>
+            <button onclick="godPower('freeze_time')">Freeze Time</button>
+            <button onclick="godPower('invert_controls')">Invert Controls</button>
+            <button onclick="godPower('mind_control')">Mind Control</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

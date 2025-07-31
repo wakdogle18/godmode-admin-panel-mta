@@ -177,8 +177,8 @@ MIT License – Bebas digunakan, dimodifikasi, dan disebarkan dengan mencantumka
 
 ## 🤝 Kredit
 
-- **Dikembangkan oleh:** Multi Theft Auto Script Master
-- **Direquest oleh:** @wakdogle18
+- **Dikembangkan oleh:** @wakdogle18
+
 
 ---
 
